@@ -2,5 +2,5 @@
 // e menores que 100
 db.produtos.find(
   { curtidas: { $gt: 10, $lt: 100 } },
-  { _id: false, nome: true, curtidas: true }
+  { _id: false, nome: true, curtidas: true },
 );
