@@ -1,0 +1,38 @@
+use('commerce');
+
+// db.produtos.find({});
+// db.produtos.find({}, { _id: false });
+
+// db.produtos.countDocuments(); // questao 01
+// db.produtos.find({}, { _id: false, nome: true, vendidos: true }).sort({ vendidos: 1 }) // Questao 02
+// db.produtos.find({},{ _id: false, nome: true, vendidos: true }).sort({ vendidos: -1 }).limit(1) // Questao 03
+// db.produtos.find({ $and: [{ vendidos: { $gt: 50, } }, { vendidos: { $lt: 100 } }] },{ _id: false, nome: true, vendidos: true}).sort({ vendidos: 1 }); // Questao 04
+// db.produtos.find({ $or: [{ curtidas: 36 }, { vendidos: 85 }] }, { _id: false, nome: true, curtidas: true, vendidos: true}) // Questao 05
+// db.produtos.find({ $and: [{ curtidas: { $gt: 10, $lt: 100 } }] }, { _id: false, nome: true, curtidas: true }) // Questao 06
+// db.produtos.find({ $and: [{ vendidos: { $ne: 50 } }, { tags: null }] }, { _id: false, nome: true, vendidos: true }) // Questao 07
+// db.produtos.deleteMany({ curtidas: { $lt: 50 } }); db.produtos.find({},{ _id: false, nome: true }); // Questao 08
+// db.produtos.find({ $and: [{ 'valoresNutricionais.tipo': 'calorias' }, { 'valoresNutricionais.quantidade': { $lt: 500 } }] }, {});
+// db.produtos.find({ $and: [{ valoresNutricionais: { $elemMatch: {  tipo: "calorias", quantidade: { $lt: 500 } } } } ] }, { _id: false, nome: true }); // Questao 09
+// db.produtos.find({ $and: [{ valoresNutricionais: { $elemMatch: {  tipo: "proteínas", percentual: { $gte: 30, $lte: 40 } } } } ] }, { _id: false, nome: true }); // Questao 10
+// db.produtos.find({ nome: { $nin: ['Big Mac', 'McChicken'] } }, { _id: false, nome: true, curtidas: true, vendidos: true }); // Questao 11
+// db.produtos.updateMany({ nome: { $ne: 'McChicken' } }, { $addToSet: { ingredientes: 'ketchup' } }); db.produtos.find({}, { _id: false, nome: true, ingredientes: true }); // Questao 12
+// db.produtos.updateMany({}, { $set: { criadoPor: 'Ronald McDonald' } }); db.produtos.find({}, { _id: false, nome: true, criadoPor: true }); // Questao 13
+// db.produtos.find({ ingredientes: { $in: ['picles'] } }, { _id: false, nome: true, ingredientes: true, valoresNutricionais: { $slice: 3 } }); // Questao 14
+// db.produtos.updateMany({}, { $set: { avaliacao: 0 } }); db.produtos.updateMany({ tags: { $in: ['bovino'] } }, { $set: { avaliacao: 5 } }); db.produtos.updateMany({ tags: { $in: ['ave'] } }, { $set: { avaliacao: 3 } }); db.produtos.find({}, { _id: false, nome: true, avaliacao: true }) // Questao 15
+// db.produtos.update({ nome: 'Big Mac' }, { $set: { ultimaModificacao: new ISODate() } }); db.produtos.find({ ultimaModificacao: { $exists: true }}, { _id: false, nome: true }); // Questao 16
+// const totalProdutosMc = db.produtos.countDocuments({}); db.resumoProdutos.insertOne({ franquia: 'McDonalds', totalProdutos: totalProdutosMc }); db.resumoProdutos.findOne({}, { _id: false, franquia: true, totalProdutos: true }); // Questao 17
+// db.produtos.updateMany({ nome: { $in: ["Big Mac", "Quarteirão com Queijo"] } }, { $push: { ingredientes: "bacon" } }); db.produtos.find({}, { _id: false, nome: true, ingredientes: true }); // Questao 18
+// db.produtos.update({}, { $pull: { ingredientes: 'cebola' } }); db.produtos.find({}, { _id: false, nome: true, ingredientes: true }); // Questao 19
+// db.produtos.updateOne({ nome: 'Quarteirão com Queijo' }, { $pop: { ingredientes: -1 } }); db.produtos.find({}, { _id: false, nome: true, ingredientes: true }); // Questao 20
+// db.produtos.updateOne({ nome: 'Cheddar McMelt' }, { $pop: { ingredientes: 1 } }); db.produtos.find({}, { _id: false, nome: true, ingredientes: true }); // Questao 21
+// db.produtos.updateMany({}, { $set: { vendasPorDia: [0, 0, 0, 0, 0, 0, 0] } }); db.produtos.updateOne({ nome: 'Big Mac'}, { $set: { 'vendasPorDia.3': 60  } }); db.produtos.updateMany({ tags: { $in: ['bovino'] } }, { $set: { 'vendasPorDia.6': 120 } }); db.produtos.find({}, { _id: false, nome: true, vendasPorDia: true}) // Questao 22
+// db.produtos.updateMany({}, { $push: { tags: { $each: ['combo', 'tasty'], $sort: 1 } } }); db.produtos.find({}, { _id: false, nome: true, tags: true }); // Questao 23
+// db.produtos.updateMany({}, { $push: { valoresNutricionais: { $each: [], $sort: { percentual: -1 } } } }); db.produtos.find({}, { _id: false, nome: true, valoresNutricionais: true }); // Questao 24
+// db.produtos.updateMany({ valoresNutricionais: { $elemMatch: {  tipo: "sódio", percentual: { $gte: 40 } } } }, { $addToSet: { tags: 'muito sódio' } }); db.produtos.find({}, { _id: false, nome: true, tags: true }); // Questao 25
+// db.produtos.updateMany({ valoresNutricionais: { $elemMatch: {  tipo: "sódio", percentual: { $gt: 20, $lt: 40 } } } }, { $addToSet: { tags: 'contém sódio' } }); db.produtos.find({}, { _id: false, nome: true, tags: true }); // Questao 26
+// db.produtos.countDocuments({ nome: /mc/i }); // Questao 27
+// db.produtos.countDocuments({ ingredientes: { $size: 4 } }); // Questao 28
+// db.produtos.updateMany({}, { $rename: { 'descricao': 'descricaoSite' } }); db.produtos.find({}, { _id: false, nome: true, descricaoSite: true }); // Questao 29
+// db.produtos.updateOne({ nome: 'Big Mac' }, { $unset: { curtidas: '' } }); db.produtos.find({}, { _id: false, nome: true, curtidas: true }); // Questao 30
+// db.produtos.find({ $expr: { $gt: ['$curtidas', '$vendidos'] } }, { _id: false, nome: true }); // Questao 31
+// db.produtos.find({ vendidos: { $mod: [5, 0] } }, { _id: false, nome: true, vendidos: true }); // Questao 32
