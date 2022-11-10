@@ -10,10 +10,11 @@ db.produtos.updateMany(
     $push: { ingredientes: "bacon" },
   },
 );
-db.produtos.find({},
+db.produtos.find(
+  {},
   {
     _id: false,
     nome: true,
-    ingredientes: true
+    ingredientes: true,
   },
 );
