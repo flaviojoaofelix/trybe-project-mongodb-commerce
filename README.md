@@ -1,6 +1,8 @@
 # Trybe - Projeto MongoDB Commerce
 Projeto voltado a fixar o conhecimento de queries _NoSQL_ com o banco de dados __MongoDB__.
 
+Nesse projeto, trabalhamos com o banco de dados `commerce`, que contém dados do cardápio do McDonald's, como ingredientes, valores nutricionais e dados fictícios de vendas.
+
 ## Detalhes
 
 Você encontra na pasta [__challenges__](https://github.com/flaviojoaofelix/trybe-project-mongodb-commerce/tree/main/challenges), 32 arquivos _.js_ com queries que visam atender os requisitos listados abaixo.
@@ -9,6 +11,22 @@ Também é possível encontrar todas as queries no arquivo __challenges__/_playg
 
 O arquivo BSON com a seed do banco de dados pode ser encontrado na pasta [__assets__](https://github.com/flaviojoaofelix/trybe-project-mongodb-commerce/tree/main/assets)
 
+<details>
+  <summary>
+    <strong>🐳 Como usar o Docker para este projeto</strong>
+  </summary><br>
+
+  - Para quem não possui o MongoDB instalado e está utilizando o docker, é necessário executar os testes localmente usando os seguintes passos:
+
+  1. Acesse o terminal na raiz da pasta do projeto;
+  2. Crie um container com um volume apontando para a pasta do projeto `docker run -d --name=nomeDoContainer -v "$PWD:/app" -p 27017:27017 mongo:5.0`;
+  3. Com o container em execução, acesse o terminal do container `docker exec -it nomeDoContainer bash`;
+  4. No terminal do container, acesse o diretório `/app` mapeado no volume conforme o passo 2;
+  > Para restaurar o banco de dados é necessário que você esteja dentro do diretório `/app`. Para mais detalhes, veja o tópico: "♻️ Restaurando o banco de dados `commerce`".
+  5. Por fim, execute o script de testes do projeto: `./scripts/evaluate.sh`.
+  Se por algum motivo a execução do container for finalizada, basta iniciá-lo novamente com o comando `docker start nomeDoContainer` e seguir a partir do passo 3.
+
+</details>
 
 ## Requisitos/Desafios
 
